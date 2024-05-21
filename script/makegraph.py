@@ -1,3 +1,20 @@
+# This script reads the dump file and creates a graph of the particles.
+# The input is the dump file of the atomic structure, and the output is the graph of the particles.
+# In the script, domain decomposition method (DDM) for accelerating MD simulation is used to accelerate the 
+# calculation of the graph by sacrificing the accuracy of the graph a little.
+# The script is divided into several functions:
+# 
+# - file_reader: Read the dump file and extract the information of the particles.
+# - particles_info: Extract the information of the particles from the dump file.
+# - mesh_classifier: Classify the particles into the mesh.
+# - calc_neibcells: Calculate the neighboring cells of the mesh.
+# - get_neibcoord: Get the neighboring coordinates of the particles.
+# - make_graph: Create the graph of the particles.
+# - calc_distance: Calculate the distance between two particles.
+# - calc_speed: Calculate the speed of the particles.
+# - pipeline: Execute the functions in order.
+# - main: Read the configuration file and execute the pipeline function.
+
 import sys
 import math
 import yaml

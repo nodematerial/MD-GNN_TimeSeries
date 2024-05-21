@@ -1,3 +1,6 @@
+# This script is used to calculate the common neighbor analysis (CNA) of the atomic structure by using OVITO Python.
+# The input is the dump file of the atomic structure, and the output is the CNA of each atom.
+
 import sys
 import yaml
 from pathlib import Path

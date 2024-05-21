@@ -1,3 +1,6 @@
+# This script reads the log file and extracts the thermodynamic data.
+# The input is the log file of the LAMMPS simulation, and the output is the thermodynamic data in CSV format(thermo.csv).
+
 import os
 import sys
 import pandas as pd

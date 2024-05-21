@@ -1,8 +1,7 @@
-## Training MD-GNN Model
-
+# 3.3. Multi-step ahead prediction by recursive time evolution of latent vectors
 
 ### Command
 
-poetry run python3 build_fullyconnected_pth.py
 poetry run python3 recursive.py
+(cd predictions; poetry run python3 split_prediction_csv.py)
 poetry run python3 mapping.py

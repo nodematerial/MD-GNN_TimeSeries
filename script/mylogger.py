@@ -1,3 +1,5 @@
+# This script is used by the training of the MD-GNN model in this paper.
+
 def init_logger(log_file='train.log'):
     from logging import getLogger, INFO, FileHandler,  Formatter,  StreamHandler
     logger = getLogger(__name__)

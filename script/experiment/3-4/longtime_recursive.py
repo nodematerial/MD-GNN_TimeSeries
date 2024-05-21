@@ -54,11 +54,18 @@ def infer(gnn_model, lstm_model, data, future_predictions_num, temp, prediction_
     previous_latent_vectors_dict = defaultdict(list)
 
     # FIXME: 最初の数ステップに対しても、遡ってprediction_length個の潜在ベクトルの平均を取れるようにする
+    # FIXME: Also, for the first few steps, take the average of prediction_length latent vectors back
 
     lstm_model.eval()
     for timestep in range(future_predictions_num):
         # 過去の複数の潜在ベクトルから現在のtimestepの潜在ベクトルを推定する
-        # これを複数回行い、推定した潜在ベクトルの平均を取る
+        # これを複数回行い、推定した潜在ベクトルの平均を取り、次の潜在ベクトル(確定)として用いる
+        # 
+        # Estimate the latent vector of the current timestep from multiple past latent vectors
+        # Do this multiple times, take the average of the estimated latent vectors, and use it as the next
+        # latent vector (determined)
+        #
+        # [expample]
         # p: previous, n: new
         # t1 t2 t3 t4 t5 t6 t7 t8   t9 t10
         #
@@ -88,6 +95,10 @@ def infer(gnn_model, lstm_model, data, future_predictions_num, temp, prediction_
 # 引数の値に応じた、過去の潜在ベクトルのリストを返す
 # 0 の場合は現在最新のものから prediction_length 個の潜在ベクトルを返す
 # 1 の場合は一つ前のものから prediction_length 個の潜在ベクトルを返す...
+# 
+# Return a list of past latent vectors according to the argument value
+# If 0, return prediction_length latent vectors from the latest one
+# If 1, return prediction_length latent vectors from the previous one...
 def previous_tensor(data, prediction_length, temp):
     dat = np.array(data[-prediction_length:])
 
