@@ -1,0 +1,44 @@
+# training
+cutoff : 2.7
+interval: 300
+thermo_data_per_condition: 300
+
+all_dirs : [Ni/1800K, Ni/1850K, Ni/1900K, Ni/1950K, Ni/2000K, Ni/2050K, Ni/2100K]
+train_dirs: [Ni/1800K, Ni/1900K, Ni/2000K, Ni/2100K]
+valid_dirs: [Ni/1850K, Ni/1950K, Ni/2050K]
+all_temps: [1800, 1850, 1900, 1950, 2000, 2050, 2100]
+train_temps: [1800, 1900, 2000, 2100]
+valid_temps: [1850, 1950, 2050]
+seed: 42
+
+gnn_layer_hidden_dim: 60
+last_layer_hidden_dim: 32
+
+epochs: 100
+lr: 0.0003
+
+loader_params:
+  train:
+    batch_size : 32
+    num_workers : 24
+    shuffle : True
+  valid:
+    batch_size : 32
+    num_workers : 24
+    shuffle : False
+
+sequence_length: 20
+prediction_length: 10
+
+lstm_params:
+  input_dim: 32 # same as last_layer_hidden
+  hidden_dim: 1000
+  num_layers: 2
+  batch_first: True
+  dropout: 0.5
+
+wandb: false
+project_name: MDGNN_TIME_ADDITIONAL
+exp_name: 3-2
+
+BASE_ENERGY: [-86038.465,-86038.465,-86038.465,-86038.465,-86038.465,-86038.465,-86038.465,-86038.465,-86038.465,-86038.465]

@@ -1,0 +1,44 @@
+# training
+cutoff : 2.7
+interval: 300
+thermo_data_per_condition: 300
+
+all_dirs : [Ni/1000K, Ni/1100K, Ni/1200K, Ni/1300K, Ni/1400K, Ni/1500K, Ni/1600K, Ni/1700K, Ni/1800K, Ni/1900K]
+train_dirs: [Ni/1000K, Ni/1200K, Ni/1400K, Ni/1600K, Ni/1800K]
+valid_dirs: [Ni/1100K, Ni/1300K, Ni/1500K, Ni/1700K, Ni/1900K]
+all_temps: [1000, 1100, 1200, 1300, 1400, 1500, 1600, 1700, 1800, 1900]
+train_temps: [1000, 1200, 1400, 1600, 1800]
+valid_temps: [1100, 1300, 1500, 1700, 1900]
+seed: 42
+
+gnn_layer_hidden_dim: 60
+last_layer_hidden_dim: 32
+
+epochs: 1200
+lr: 0.0003
+
+loader_params:
+  train:
+    batch_size : 32
+    num_workers : 24
+    shuffle : True
+  valid:
+    batch_size : 32
+    num_workers : 24
+    shuffle : False
+
+sequence_length: 20
+prediction_length: 10
+
+lstm_params:
+  input_dim: 32 # same as last_layer_hidden
+  hidden_dim: 1000
+  num_layers: 2
+  batch_first: True
+  dropout: 0.5
+
+wandb: false
+project_name: MDGNN_TIMESERIES
+exp_name: 3-2
+
+BASE_ENERGY: [-86038.465,-86038.465,-86038.465,-86038.465,-86038.465,-86038.465,-86038.465,-86038.465,-86038.465,-86038.465]

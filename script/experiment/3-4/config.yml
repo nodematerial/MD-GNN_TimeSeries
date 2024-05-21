@@ -1,0 +1,18 @@
+interval: 300
+thermo_thermo_data_per_condition: 300
+future_predictions_num: 3000
+
+all_dirs : [Ni/1000K, Ni/1100K, Ni/1200K, Ni/1300K, Ni/1400K, Ni/1500K, Ni/1600K, Ni/1700K, Ni/1800K, Ni/1900K]
+all_temps: [1000, 1100, 1200, 1300, 1400, 1500, 1600, 1700, 1800, 1900]
+
+sequence_length: 20
+prediction_length: 10
+
+lstm_params:
+  input_dim: 32 # same as last_layer_hidden
+  hidden_dim: 1000
+  num_layers: 2
+
+weight_file: best_lstm.pth
+
+BASE_ENERGY: [-86038.465,-86038.465,-86038.465,-86038.465,-86038.465,-86038.465,-86038.465,-86038.465,-86038.465,-86038.465]

@@ -1,0 +1,25 @@
+# training
+cutoff : 2.7
+interval: 300
+thermo_data_per_condition: 300
+
+all_dirs : [Ni/1800K, Ni/1850K, Ni/1900K, Ni/1950K, Ni/2000K, Ni/2050K, Ni/2100K]
+all_temps: [1800, 1850, 1900, 1950, 2000, 2050, 2100]
+
+seed: 42
+
+sequence_length: 20
+prediction_length: 10
+
+lstm_params:
+  input_dim: 32 # same as last_layer_hidden
+  hidden_dim: 1000
+  num_layers: 2
+
+project_name: MDGNN_TIME_ADDITIONAL 
+exp_name: 3-3
+BASE_ENERGY: [-86038.465,-86038.465,-86038.465,-86038.465,-86038.465,-86038.465,-86038.465,-86038.465,-86038.465,-86038.465]
+
+weight_file: best_lstm.pth
+latent_vector_dim: 32
+future_predictions_num: 600
